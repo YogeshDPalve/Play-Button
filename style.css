@@ -1,0 +1,90 @@
+#button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    width: 85px;
+    border-radius: 5px;
+    border: none;
+    background: #004969;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:before,
+button:after {
+    transition: transform 0.25s ease-in-out;
+}
+
+button:before {
+    position: relative;
+    content: "";
+    display: block;
+    border-left: 15px solid #abe2f9;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    opacity: 1;
+    z-index: 0;
+}
+
+button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    box-shadow: inset 8px 0 0 #004969, inset -8px 0 0 #004969;
+    transform: scale(0);
+    z-index: 2;
+}
+
+button .progress {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 65px;
+    bottom: 0px;
+    left: 0;
+}
+
+button .progress:before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0.35;
+    background: #00a7e1;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+button.pause:before {
+    transform: scale(20);
+    pointer-events: none;
+}
+
+button.pause:after {
+    transform: scale(1);
+}
+
+button.pause .progress {
+    transform: translateY(0px);
+}
+
+button.pause .progress:before {
+    transition: transform 10s linear;
+    transform: scaleX(1);
+}
